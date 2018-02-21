@@ -61,7 +61,6 @@ public class MucClient
         throws Exception
     {
         xmppConnection = new XMPPTCPConnection(config);
-        xmppConnection.connect().login();
         xmppConnection.addConnectionListener(new ConnectionListener()
         {
             @Override
@@ -106,6 +105,7 @@ public class MucClient
                 logger.info("XMPP reconnection failed on " + config.getXMPPServiceDomain() + " due to " + e.toString());
             }
         });
+        xmppConnection.connect().login();
     }
 
     /**
